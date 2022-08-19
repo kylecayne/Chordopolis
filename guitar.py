@@ -7,7 +7,7 @@ root.title("Chordopolis")
 root.resizable(False,False)
 root.configure(bg = "black")
 root.iconbitmap(r"icon.ico")
-root.geometry("330x650")
+root.geometry("330x700")
 bottomE = []
 bottomE_vars = [IntVar(),IntVar(),IntVar(),IntVar(),IntVar(),IntVar(),IntVar(),IntVar(),IntVar(),IntVar(),IntVar(),IntVar(),IntVar()]
 a = []
@@ -205,8 +205,15 @@ def check_keys():
 			sentence = chords.get(final).replace("S","♯")
 			chord_label.config(text = (chords.get(final).replace("S","♯")))
 			break
-
+def reset():
+	global bottomE,a,d,g,b,topE
+	key = [bottomE,a,d,g,b,topE]
+	for i in key:
+		for k in i:
+			k.deselect()
 check = tk.Button(text = "Click for chord", command = check_keys, height = 2, width = 20,font=("Arial", 10),fg = "white",bg = "black")
 check.place(x = 10, y = 602)
+reset = tk.Button(text = "Click to reset", command = reset, heigh = 2, width = 35, font=("Arial", 10),fg = "white",bg = "black")
+reset.place(x = 10, y = 650)
 chord_label.place(x = 200, y = 605)
 root.mainloop()
